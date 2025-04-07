@@ -1,0 +1,1 @@
+import rss from '@astrojs/rss';
