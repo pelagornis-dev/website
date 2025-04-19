@@ -8,4 +8,4 @@ Pelagornis Official Website
 
 
 ## License
-**github-template** is under MIT license. See the [LICENSE](LICENSE) file for more info.
+**website** is under MIT license. See the [LICENSE](LICENSE) file for more info.
