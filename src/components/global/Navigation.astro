@@ -1,0 +1,17 @@
+---
+import { useTranslations, getLangFromUrl, useTranslatedPath, getLangFromPath } from "@i18n/utils";
+import {ui as languages} from "@i18n/ui"
+const { lang, url } = Astro.props;
+const t = useTranslations(lang);
+const translatedPath = useTranslatedPath(lang);
+---
+<header
+  aria-labelledby="navigation"
+  id="navigation"
+  class="relative w-full z-50 border-b border-white/5 backdrop-blur-2xl"
+>
+  <div>
+
+  </div>
+
+</header>

@@ -1,0 +1,13 @@
+---
+import {useTranslations, useTranslatedPath} from "@i18n/utils"
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const translatedPath = useTranslatedPath(lang);
+---
+<footer
+  aria-labelledby="footer"
+  id="footer"
+  class="bg-vulcan-900 relative border-t border-white/5"
+>
+  
+</footer>

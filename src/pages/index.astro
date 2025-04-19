@@ -1,36 +1,33 @@
 ---
-// Component Imports
-import Counter from '../components/Counter';
-const someProps = {
-	count: 0,
+import Layout from '@layouts/Layout.astro';
+import type { MetaData, MetaDataOpenGraph } from '~/types';
+import { useTranslations, getLangFromUrl, useTranslatedPath } from "@i18n/utils";
+import site from '@utils/metadata.json';
+
+const lang = getLangFromUrl(Astro.url);
+const translatedPath = useTranslatedPath(lang);
+const t = useTranslations(lang);
+
+const openGraph: MetaDataOpenGraph = {
+  url: site.url,
+  title: "",
+  description: t('home.description'),
+  images: [
+    {
+      url: `${site.url}${translatedPath("/og-image.jpg")}`,
+      alt: 'Pelagornis Logo',
+      type: 'image/jpg',
+      height: 630,
+      width: 1200
+    }
+  ],
 };
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+const metadata: MetaData = {
+  openGraph: openGraph
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<style>
-			html,
-			body {
-				font-family: system-ui;
-				margin: 0;
-			}
-			body {
-				padding: 2rem;
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<Counter {...someProps} client:visible>
-				<h1>Hello, React!</h1>
-			</Counter>
-		</main>
-	</body>
-</html>
+<Layout metadata={metadata}>
+
+</Layout>

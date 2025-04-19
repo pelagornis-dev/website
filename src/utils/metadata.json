@@ -1,0 +1,9 @@
+{
+    "title": "Pelagornis",
+    "description": "Create Powerful Platforms, Personalized to You.",
+    "url": "https://pelagornis.com",
+    "robots": {
+        "index": true,
+        "follow": true
+    }
+}

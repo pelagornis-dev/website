@@ -1,0 +1,23 @@
+---
+import { Font } from "astro:assets";
+import CommonMeta from "@components/common/CommonMeta.astro";
+import Metadata from "@components/common/Metadata.astro";
+import { ClientRouter } from 'astro:transitions';
+import type { MetaData } from '~/types';
+
+export interface Props {
+  metadata?: MetaData;
+}
+
+const { metadata = {} } = Astro.props;
+---
+
+<CommonMeta />
+<Metadata { ...metadata } />
+<ClientRouter fallback="swap" />
+<Font cssVariable='--font-inter' preload />
+<style>
+body {
+    font-family: : var(--font-inter);
+}
+</style>
