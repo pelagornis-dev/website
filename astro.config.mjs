@@ -25,7 +25,7 @@ export default defineConfig({
         name: "Inter",
         cssVariable: "--font-inter"
       }
-    ]
+    ],
   },
   integrations: [
     react(), 
