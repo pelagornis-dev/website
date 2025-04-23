@@ -1,13 +1,65 @@
 ---
-import {useTranslations, useTranslatedPath} from "@i18n/utils"
+import { footerLinks } from "~/navigation";
+import { useTranslations, useTranslatedPath } from "@i18n/utils";
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const translatedPath = useTranslatedPath(lang);
 ---
+
 <footer
   aria-labelledby="footer"
   id="footer"
-  class="bg-vulcan-900 relative border-t border-white/5"
+  class="bg-white border-t border-[#f1f1f1]"
 >
-  
+  <div class="mx-auto max-w-[1440px] px-6 lg:px-12">
+    <!-- Main Content -->
+    <div class="py-16">
+      <div class="flex flex-col lg:flex-row gap-16">
+        <!-- Logo Section -->
+        <div class="lg:w-[320px] space-y-6">
+          <a href="/" class="inline-flex items-center">
+            <img
+              src="/logo/pelagornis.svg"
+              alt="Pelagornis"
+              class="h-[22px] w-auto"
+            />
+          </a>
+        </div>
+
+        <!-- Links Sections -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 flex-1">
+          {
+            footerLinks.links.map((link) => (
+              <div class="space-y-4">
+                <h3 class="text-[14px] font-medium text-[#111827]">
+                  {link.title}
+                </h3>
+                <ul class="space-y-3">
+                  {link.links.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        class="text-[14px] text-[#374151] hover:text-black transition-colors"
+                      >
+                        {link.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="border-t border-[#f1f1f1] py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-[14px] text-[#374151]">
+          © {new Date().getFullYear()} Pelagornis Inc. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
 </footer>

@@ -35,15 +35,15 @@ export const footerLinks = {
             links: [
                 {
                     title: "Slack",
-                    href: "https://discord.gg/astro",
+                    href: "https://pelagornis.slack.com",
                 },
                 {
                     title: "GitHub",
                     href: "https://github.com/pelagornis",
                 },
                 {
-                    title: "Twitter",
-                    href: "https://twitter.com/astrodotbuild",
+                    title: "X",
+                    href: "https://x.com/@pelagornis_com",
                 },
             ],
         },

@@ -1,23 +1,118 @@
 ---
-import Pelagornis from '../../../public/logo/pelagornis.svg';
+import Pelagornis from "../../../public/logo/pelagornis.svg";
+import { headerLinks } from "~/navigation";
+import {
+  useTranslations,
+  getLangFromUrl,
+  useTranslatedPath,
+  getLangFromPath,
+} from "@i18n/utils";
 
-import { useTranslations, getLangFromUrl, useTranslatedPath, getLangFromPath } from "@i18n/utils";
-import {ui as languages} from "@i18n/ui"
+import { ui as languages } from "@i18n/ui";
 const { lang, url } = Astro.props;
 const t = useTranslations(lang);
 const translatedPath = useTranslatedPath(lang);
-
 ---
+
 <header
   aria-labelledby="navigation"
   id="navigation"
-  class="top-0 relative w-full z-50 border-b border-white/5 backdrop-blur-2xl"
+  class="fixed top-0 left-0 right-0 z-50"
 >
-  <div class="relative flex flex col w-full py-3 px-3 md:items-center md:justify-between md:flex-row md:px:8 lg:px:12">
-    <div class="flex items-center" class="flex items-center">
-      <a href="/" title="Logo">
-        <Pelagornis width={129} height={20}/>
+  <div
+    class="absolute inset-0 bg-white/[0.6] backdrop-blur-[12px] border-b border-[#f1f1f1]"
+  >
+  </div>
+  <div class="relative mx-auto max-w-[1440px] px-6 lg:px-12">
+    <div class="flex h-[56px] items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex shrink-0 items-center" title="Logo">
+        <Pelagornis width={129} height={20} class="h-[22px] w-auto" />
       </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1">
+        {
+          headerLinks.links.map((link) => (
+            <a
+              href={link.href}
+              class="inline-flex h-[36px] items-center rounded-[8px] px-[12px] text-[14px] font-medium text-[#374151] transition-colors hover:bg-black/[0.04] hover:text-black"
+            >
+              {link.title}
+            </a>
+          ))
+        }
+      </nav>
+
+      <!-- Right Section -->
+      <div class="flex items-center gap-3">
+        <!-- Sign In Button -->
+        <a
+          href="/login"
+          class="inline-flex h-[36px] items-center rounded-[8px] bg-black px-[12px] text-[14px] font-medium text-white transition-colors hover:bg-black/90"
+        >
+          Sign in
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          type="button"
+          class="md:hidden inline-flex h-[36px] w-[36px] items-center justify-center rounded-[8px] text-[#374151] transition-colors hover:bg-black/[0.04] hover:text-black"
+          aria-label="Menu"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M2 12h12M2 4h12M2 8h12"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
+
+  <!-- Mobile Menu Panel -->
+  <div class="hidden md:hidden">
+    <nav
+      class="fixed inset-x-0 top-[72px] bottom-0 bg-white/[0.6] backdrop-blur-[12px] border-t border-[#f1f1f1]"
+    >
+      <div class="flex flex-col gap-2 p-6">
+        {
+          headerLinks.links.map((link) => (
+            <a
+              href={link.href}
+              class="inline-flex h-[44px] items-center rounded-[8px] px-[16px] text-[14px] font-medium text-[#374151] transition-colors hover:bg-black/[0.04] hover:text-black"
+            >
+              {link.title}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+  </div>
 </header>
+
+<style>
+  header {
+    transform: translateZ(0);
+  }
+</style>
+
+<script>
+  const mobileMenuButton = document.querySelector('button[aria-label="Menu"]');
+  const mobileMenu = document.querySelector(".md\\:hidden");
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener("click", () => {
+      const isExpanded =
+        mobileMenuButton.getAttribute("aria-expanded") === "true";
+      mobileMenuButton.setAttribute(
+        "aria-expanded",
+        !isExpanded ? "true" : "false"
+      );
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+</script>

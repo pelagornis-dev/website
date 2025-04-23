@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import type { MetaData } from "~/types";
+import { getLangFromUrl, useTranslatedPath } from "@i18n/utils";
+import site from "@utils/metadata.json";
+import translations from "@i18n/locales/ko.json";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslatedPath(lang);
+
+const metadata: MetaData = {
+  title: site.title,
+  description: site.description,
+};
+---
+
+<Layout metadata={metadata}>
+  <main class="min-h-screen bg-white text-gray-900">
+    <div class="container mx-auto"></div>
+  </main>
+</Layout>

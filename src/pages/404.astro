@@ -1,8 +1,12 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import type { MetaData, MetaDataOpenGraph } from '~/types';
-import { useTranslations, getLangFromUrl, useTranslatedPath } from "@i18n/utils";
-import site from '@utils/metadata.json';
+import Layout from "@layouts/Layout.astro";
+import type { MetaData, MetaDataOpenGraph } from "~/types";
+import {
+  useTranslations,
+  getLangFromUrl,
+  useTranslatedPath,
+} from "@i18n/utils";
+import site from "@utils/metadata.json";
 
 const lang = getLangFromUrl(Astro.url);
 const translatedPath = useTranslatedPath(lang);
@@ -15,19 +19,42 @@ const openGraph: MetaDataOpenGraph = {
   images: [
     {
       url: `${site.url}${translatedPath("/og-images/error.jpg")}`,
-      alt: 'Not found page',
-      type: 'image/jpg',
+      alt: "Not found page",
+      type: "image/jpg",
       height: 630,
-      width: 1200
-    }
+      width: 1200,
+    },
   ],
 };
 
 const metadata: MetaData = {
-  openGraph: openGraph
+  openGraph: openGraph,
 };
 ---
 
 <Layout metadata={metadata}>
-
+  <main class="min-h-screen bg-white">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-12">
+      <div
+        class="flex min-h-[calc(100vh-72px)] flex-col items-center justify-center"
+      >
+        <div class="text-center mb-12">
+          <h1
+            class="text-[80px] font-bold text-black mb-6 leading-none tracking-tight"
+          >
+            Page not found
+          </h1>
+          <p class="text-[20px] text-[#6B7280] mb-10">
+            We can't seem to find the page you are looking for.
+          </p>
+          <a
+            href="/"
+            class="inline-flex h-[48px] items-center rounded-[8px] bg-black px-[24px] text-[16px] font-medium text-white transition-all hover:bg-black/90 hover:scale-[1.02]"
+          >
+            home
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>

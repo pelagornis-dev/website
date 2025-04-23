@@ -1,0 +1,39 @@
+---
+import Layout from "@layouts/Layout.astro";
+import type { MetaData, MetaDataOpenGraph } from "~/types";
+import {
+  useTranslations,
+  getLangFromUrl,
+  useTranslatedPath,
+} from "@i18n/utils";
+import site from "@utils/metadata.json";
+
+const lang = getLangFromUrl(Astro.url);
+const translatedPath = useTranslatedPath(lang);
+const t = useTranslations(lang);
+
+const openGraph: MetaDataOpenGraph = {
+  url: site.url,
+  title: "Stories - Pelagornis",
+  description: "Stories",
+  images: [
+    {
+      url: `${site.url}${translatedPath("/og-images/stories.jpg")}`,
+      alt: "Pelagornis Stories",
+      type: "image/jpg",
+      height: 630,
+      width: 1200,
+    },
+  ],
+};
+
+const metadata: MetaData = {
+  openGraph: openGraph,
+};
+---
+
+<Layout metadata={metadata}>
+  <main class="min-h-screen bg-white text-gray-900">
+    <div class="container mx-auto"></div>
+  </main>
+</Layout>

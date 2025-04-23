@@ -1,22 +1,24 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import type { MetaData, MetaDataOpenGraph } from '~/types';
+import Layout from "@layouts/Layout.astro";
+import type { MetaData, MetaDataOpenGraph } from "~/types";
 
 const openGraph: MetaDataOpenGraph = {
-  url: '',
-  title: '',
-  description: '',
+  url: "",
+  title: "",
+  description: "",
   images: [],
-  siteName: ''
+  siteName: "",
 };
 
 const metadata: MetaData = {
-  title: 'Pelagornis',
-  description: '',
-  openGraph: openGraph
+  title: "Pelagornis",
+  description: "",
+  openGraph: openGraph,
 };
 ---
 
 <Layout metadata={metadata}>
-    
+  <main class="min-h-screen bg-white text-gray-900">
+    <div class="container mx-auto"></div>
+  </main>
 </Layout>
