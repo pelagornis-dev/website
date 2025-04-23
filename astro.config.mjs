@@ -1,34 +1,34 @@
 // @ts-check
-import { defineConfig, fontProviders } from 'astro/config';
-import node from '@astrojs/node';
-import react from '@astrojs/react';
+import { defineConfig, fontProviders } from "astro/config";
+import node from "@astrojs/node";
+import react from "@astrojs/react";
 import compressor from "astro-compressor";
-import mdx from '@astrojs/mdx';
-import partytown from '@astrojs/partytown';
-import sitemap from '@astrojs/sitemap';
+import mdx from "@astrojs/mdx";
+import partytown from "@astrojs/partytown";
+import sitemap from "@astrojs/sitemap";
 
 import sentry from "@sentry/astro";
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pelagornis.com',
+  site: "https://pelagornis.com",
   output: "server",
   adapter: node({
-    mode: 'standalone',
+    mode: "standalone",
   }),
   experimental: {
     fonts: [
       {
         provider: fontProviders.google(),
         name: "Inter",
-        cssVariable: "--font-inter"
-      }
+        cssVariable: "--font-inter",
+      },
     ],
   },
   integrations: [
-    react(), 
+    react(),
     mdx(),
     compressor(),
     sitemap(),
@@ -47,13 +47,13 @@ export default defineConfig({
         project: "website",
         authToken: process.env.SENTRY_AUTH_TOKEN,
       },
-    })
+    }),
   ],
   i18n: {
     defaultLocale: "en",
     locales: ["en", "ko"],
     routing: {
-      prefixDefaultLocale: false
+      prefixDefaultLocale: false,
     },
   },
   vite: {
