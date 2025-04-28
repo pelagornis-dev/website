@@ -19,7 +19,7 @@ const translatedPath = useTranslatedPath(lang);
         <!-- Logo Section -->
         <div class="lg:w-[320px] space-y-6">
           <a href="/" class="inline-flex items-center">
-            <PelagornisText />
+            <PelagornisText width="auto" height={32} />
           </a>
         </div>
 
@@ -28,7 +28,7 @@ const translatedPath = useTranslatedPath(lang);
           {
             footerLinks.links.map((link) => (
               <div class="space-y-4">
-                <h3 class="text-[14px] font-medium text-[#111827]">
+                <h3 class="text-[14px] font-semibold text-[#111827]">
                   {link.title}
                 </h3>
                 <ul class="space-y-3">
@@ -52,7 +52,7 @@ const translatedPath = useTranslatedPath(lang);
 
     <!-- Bottom Section -->
     <div class="border-t border-[#f1f1f1] py-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex flex-col md:flex-row items-left justify-between gap-4">
         <p class="text-[14px] text-[#374151]">
           © {new Date().getFullYear()} Pelagornis Inc. All rights reserved.
         </p>
