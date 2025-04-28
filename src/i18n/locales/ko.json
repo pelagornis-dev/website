@@ -1,6 +1,9 @@
 {
     "home.title": "Pelagornis",
     "home.description": "당신에게 최적화된 강력한 플랫폼을 만듭니다.",
+    "home.og.image.header": "Pelagornis",
+    "home.og.image.title": "당신에게 최적화된 강력한 플랫폼을 만듭니다.",
+    "home.og.image.footer": "pelagornis.com · @pelagornis_com",
     "contact.title": "Contact to Pelagornis",
     "contact.description": "어떻게 도와드릴까요?"
 }
