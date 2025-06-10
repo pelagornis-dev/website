@@ -25,25 +25,8 @@ export const footerLinks = {
             title: "Products",
             links: [
                 {
-                    title: "Pelagornis",
-                    href: "/pelagornis",
-                },
-            ],
-        },
-        {
-            title: "Community",
-            links: [
-                {
-                    title: "Slack",
-                    href: "https://pelagornis.slack.com",
-                },
-                {
-                    title: "GitHub",
-                    href: "https://github.com/pelagornis",
-                },
-                {
-                    title: "X",
-                    href: "https://x.com/@pelagornis_com",
+                    title: "AppKit",
+                    href: "/appkit",
                 },
             ],
         },
@@ -82,7 +65,7 @@ export const footerLinks = {
             links: [
                 {
                     title: "Terms of Use",
-                    href: "/terms-of-use",
+                    href: "/terms",
                 },
                 {
                     title: "Privacy Policy",
@@ -91,6 +74,23 @@ export const footerLinks = {
                 {
                     title: "Security",
                     href: "/security",
+                },
+            ],
+        },
+        {
+            title: "Social",
+            links: [
+                {
+                    title: "Slack",
+                    href: "https://pelagornis.slack.com",
+                },
+                {
+                    title: "GitHub",
+                    href: "https://github.com/pelagornis",
+                },
+                {
+                    title: "Twitter",
+                    href: "https://x.com/@pelagornis_com",
                 },
             ],
         },

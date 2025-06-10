@@ -1,7 +1,7 @@
 ---
 import { footerLinks } from "~/navigation";
 import { useTranslations, useTranslatedPath } from "@i18n/utils";
-import PelagornisText from 'public/logo/pelagornisText.svg'
+import Pelagornis from 'public/logo/pelagornis.svg'
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const translatedPath = useTranslatedPath(lang);
@@ -12,14 +12,14 @@ const translatedPath = useTranslatedPath(lang);
   id="footer"
   class="bg-white border-t border-[#f1f1f1]"
 >
-  <div class="mx-auto max-w-[1440px] px-6 lg:px-12">
+  <div class="container mx-auto px-6 lg:px-12">
     <!-- Main Content -->
     <div class="py-16">
       <div class="flex flex-col lg:flex-row gap-16">
         <!-- Logo Section -->
-        <div class="lg:w-[320px] space-y-6">
+        <div class="lg:w-[180px] space-y-6">
           <a href="/" class="inline-flex items-center">
-            <PelagornisText width="auto" height={32} />
+            <Pelagornis width="auto" height={24} />
           </a>
         </div>
 
@@ -28,7 +28,7 @@ const translatedPath = useTranslatedPath(lang);
           {
             footerLinks.links.map((link) => (
               <div class="space-y-4">
-                <h3 class="text-[14px] font-semibold text-[#111827]">
+                <h3 class="text-[14px] text-neutral-500 font-black ">
                   {link.title}
                 </h3>
                 <ul class="space-y-3">
@@ -36,7 +36,7 @@ const translatedPath = useTranslatedPath(lang);
                     <li>
                       <a
                         href={link.href}
-                        class="text-[14px] text-[#374151] hover:text-black transition-colors"
+                        class="text-[14px] text-neutral-black hover:text-neutral-500 transition-colors"
                       >
                         {link.title}
                       </a>

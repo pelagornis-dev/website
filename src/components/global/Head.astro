@@ -1,5 +1,5 @@
 ---
-import { Font } from "astro:assets";
+import FontAssets from "@components/common/FontAssets.astro";
 import CommonMeta from "@components/common/CommonMeta.astro";
 import Metadata from "@components/common/Metadata.astro";
 import Favicons from "@components/common/Favicons.astro";
@@ -16,10 +16,5 @@ const { metadata = {} } = Astro.props;
 <CommonMeta />
 <Metadata { ...metadata } />
 <Favicons />
+<FontAssets />
 <ClientRouter fallback="swap" />
-<Font cssVariable='--font-inter' preload />
-<style>
-body {
-    font-family: : var(--font-inter);
-}
-</style>

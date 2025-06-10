@@ -36,3 +36,14 @@ export interface MetaDataImage {
   width?: number;
   height?: number;
 }
+
+export interface TimelineEvent {
+  month: string;
+  title: string;
+  description: string;
+  type: string;
+}
+
+export interface TimelineData {
+  [year: string]: TimelineEvent[];
+}

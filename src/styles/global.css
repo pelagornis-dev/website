@@ -1,7 +1,333 @@
 @import "tailwindcss";
 
+@layer base {
+    :root {
+        /* Primary Brand Colors */
+        --primary-light-gray: #E6E6E6;
+        --primary-gray: #D4D4D4;
+        --primary-dark-gray: #4D4D4D;
+        --primary-black: #212121;
 
+        /* Red Palette */
+        --red-100: #FFDEDE;
+        --red-200: #FFC3C3;
+        --red-300: #FFA7A7;
+        --red-400: #FF8989;
+        --red-500: #FF6969;
+        --red-600: #F94343;
+        --red-700: #D93A3A;
+        --red-800: #BA3232;
+        --red-900: #9C2929;
+        --red-1000: #7F2222;
 
-.container {
-  max-width: 1200px;
+        /* Orange Palette */
+        --orange-100: #FAE0D1;
+        --orange-200: #F6C8AE;
+        --orange-300: #F3B08B;
+        --orange-400: #EF9664;
+        --orange-500: #EB7C3E;
+        --orange-600: #D6692C;
+        --orange-700: #BA5B26;
+        --orange-800: #9F4E21;
+        --orange-900: #85411B;
+        --orange-1000: #6C3516;
+
+        /* Yellow Palette */
+        --yellow-100: #FFE493;
+        --yellow-200: #FFCB2F;
+        --yellow-300: #F1B500;
+        --yellow-400: #DAA300;
+        --yellow-500: #C49200;
+        --yellow-600: #AD8100;
+        --yellow-700: #967000;
+        --yellow-800: #806000;
+        --yellow-900: #6B5000;
+        --yellow-1000: #564100;
+
+        /* Lime Palette */
+        --lime-100: #C8F46F;
+        --lime-200: #A4E61F;
+        --lime-300: #95D11C;
+        --lime-400: #86BC19;
+        --lime-500: #78A917;
+        --lime-600: #6A9514;
+        --lime-700: #5C8111;
+        --lime-800: #4F6E0F;
+        --lime-900: #425C0C;
+        --lime-1000: #354B0A;
+
+        /* Green Palette */
+        --green-100: #ADF7B0;
+        --green-200: #5BEE62;
+        --green-300: #2FDC37;
+        --green-400: #2AC632;
+        --green-500: #26B12D;
+        --green-600: #229D28;
+        --green-700: #1D8822;
+        --green-800: #19751D;
+        --green-900: #156119;
+        --green-1000: #114f14;
+
+        /* Teal Palette */
+        --teal-100: #C9ECF0;
+        --teal-200: #9EDDE4;
+        --teal-300: #71CDD7;
+        --teal-400: #54BAC6;
+        --teal-500: #4BA7B1;
+        --teal-600: #42949D;
+        --teal-700: #398088;
+        --teal-800: #316D74;
+        --teal-900: #295b61;
+        --teal-1000: #214a4e;
+
+        /* Blue Palette */
+        --blue-100: #DEE5FF;
+        --blue-200: #C3D0FF;
+        --blue-300: #A9BCFF;
+        --blue-400: #90A8FF;
+        --blue-500: #7694FF;
+        --blue-600: #5B7FFF;
+        --blue-700: #3E68FF;
+        --blue-800: #2351F7;
+        --blue-900: #1D44CE;
+        --blue-1000: #1837A8;
+
+        /* Purple Palette */
+        --purple-100: #EFDFFF;
+        --purple-200: #E3C7FF;
+        --purple-300: #D6AEFF;
+        --purple-400: #C995FF;
+        --purple-500: #BD7BFF;
+        --purple-600: #AF60FF;
+        --purple-700: #9E3FFF;
+        --purple-800: #891CF9;
+        --purple-900: #7318D0;
+        --purple-1000: #5E13AB;
+
+        /* Magenta Palette */
+        --magenta-100: #FCDEEC;
+        --magenta-200: #FAC3DC;
+        --magenta-300: #F7A7CB;
+        --magenta-400: #F58ABA;
+        --magenta-500: #F26BA8;
+        --magenta-600: #EF4592;
+        --magenta-700: #D6327C;
+        --magenta-800: #B82B6B;
+        --magenta-900: #9A2459;
+        --magenta-1000: #7D1E49;
+
+        /* Neutral Palette */
+        --neutral-white: #FFFFFF;
+        --neutral-100: #F5F5F5;
+        --neutral-150: #F0F0F0;
+        --neutral-200: #EBEBEB;
+        --neutral-250: #E0E0E0;
+        --neutral-300: #DBDBDB;
+        --neutral-350: #D8D8D8;
+        --neutral-400: #CECECE;
+        --neutral-450: #BBBBBB;
+        --neutral-500: #A4A4A4;
+        --neutral-550: #8D8D8D;
+        --neutral-600: #6C6C6C;
+        --neutral-650: #5B5B5B;
+        --neutral-700: #404040;
+        --neutral-750: #333333;
+        --neutral-800: #2A2A2A;
+        --neutral-850: #222222;
+        --neutral-900: #1A1A1A;
+        --neutral-950: #111111;
+        --neutral-black: #000000;
+
+        /* Font Size */
+        --font-size-100: 10px;
+        --font-size-200: 12px;
+        --font-size-300: 14px;
+        --font-size-400: 16px;
+        --font-size-500: 20px;
+        --font-size-600: 24px;
+        --font-size-700: 28px;
+        --font-size-800: 32px;
+        --font-size-900: 40px;
+        --font-size-1000: 64px;
+
+        /* Font Weights */
+        --font-weight-regular: 400;
+        --font-weight-medium: 500;
+        --font-weight-semi-bold: 600;
+        --font-weight-bold: 700;
+        --font-weight-heavy: 800;
+        
+        /* Line Height */
+        --line-height-100: 14;
+        --line-height-200: 16;
+        --line-height-300: 20;
+        --line-height-400: 24;
+        --line-height-500: 28;
+        --line-height-600: 32;
+        --line-height-700: 36;
+        --line-height-800: 48;
+        --line-height-900: 60;
+        --line-height-1000: 86;
+
+        /* Z-Index Scale */
+        --z-dropdown: 1000;
+        --z-sticky: 1020;
+        --z-fixed: 1030;
+        --z-modal-backdrop: 1040;
+        --z-modal: 1050;
+        --z-popover: 1060;
+        --z-tooltip: 1070;
+        --z-toast: 1080;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: var(--neutral-white);
+        color: var(--neutral-900);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        line-height: 1.2;
+    }
+    
+    a {
+        transition: all 0.2s ease;
+    }
+    
+    button {
+        transition: all 0.2s ease;
+    }
+}
+
+@layer components {
+    /* Heading Styles */
+
+    .container {
+      max-width: 1200px;
+    }
+    .hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 2rem;
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 1000px;
+        z-index: 2;
+        position: relative;
+    }
+
+    .hero-title {
+        text-align: left;
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 800;
+        color: var(--neutral-black);
+        margin-bottom: 5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    }
+
+    .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: var(--neutral-black);
+        color: var(--neutral-white);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border: 2px solid transparent;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    }
+
+    .cta-button:hover {
+        background: var(--neutral-750);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button:active {
+        transform: translateY(0);
+    }
+
+    .timeline-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.5s ease-in-out;
+      }
+      .timeline-content.active {
+        max-height: 1000px;
+        opacity: 1;
+      }
+      .timeline-arrow {
+        transition: transform 0.3s ease-in-out;
+      }
+      .timeline-arrow.rotated {
+        transform: rotate(180deg);
+      }
+      .timeline-event {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.5s ease-out;
+      }
+      .timeline-event.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+}
+
+@layer utilities {
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            padding: 1rem;
+        }
+        
+        .nav-links {
+            display: none;
+        }
+    }
 }

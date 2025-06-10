@@ -1,5 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import HomeHero from "@components/home/hero/HomeHero.astro";
+import Timeline from "~/components/home/features/Timeline.astro";
 import type { MetaData, MetaDataOpenGraph } from "~/types";
 import {
   useTranslations,
@@ -33,7 +35,6 @@ const metadata: MetaData = {
 ---
 
 <Layout metadata={metadata}>
-  <main class="min-h-screen bg-white text-gray-900">
-    <div class="container mx-auto"></div>
-  </main>
+  <HomeHero/>
+  <Timeline/>
 </Layout>

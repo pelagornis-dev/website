@@ -1,0 +1,193 @@
+---
+import type { TimelineData } from "~/types";
+
+const timelineData: TimelineData = {
+  2024: [
+    { 
+      month: '12월', 
+      title: '새로운 서비스 런칭', 
+      description: '혁신적인 금융 서비스를 출시했습니다',
+      type: 'launch'
+    },
+    { 
+      month: '08월', 
+      title: '시리즈 B 투자 유치', 
+      description: '100억원 규모의 투자를 성공적으로 유치했습니다',
+      type: 'investment'
+    },
+    { 
+      month: '03월', 
+      title: '사용자 100만명 돌파', 
+      description: '누적 사용자 수가 100만명을 돌파했습니다',
+      type: 'milestone'
+    }
+  ],
+  2023: [
+    { 
+      month: '11월', 
+      title: '해외 진출', 
+      description: '동남아시아 시장에 진출했습니다',
+      type: 'expansion'
+    },
+    { 
+      month: '06월', 
+      title: 'AI 기능 도입', 
+      description: '인공지능 기반 추천 시스템을 도입했습니다',
+      type: 'feature'
+    },
+    { 
+      month: '01월', 
+      title: '회사 설립', 
+      description: '새로운 여정의 시작점이 되었습니다',
+      type: 'foundation'
+    }
+  ],
+  2022: [
+    { 
+      month: '10월', 
+      title: '베타 서비스 출시', 
+      description: '초기 사용자들과 함께 서비스를 테스트했습니다',
+      type: 'beta'
+    },
+    { 
+      month: '05월', 
+      title: '팀 빌딩', 
+      description: '핵심 개발팀을 구성했습니다',
+      type: 'team'
+    }
+  ]
+};
+
+const years = Object.keys(timelineData).sort((a, b) => parseInt(b) - parseInt(a));
+
+const getTypeColor = (type: string): string => {
+  const colors: { [key: string]: string } = {
+    launch: 'bg-blue-400',
+    investment: 'bg-green-400',
+    milestone: 'bg-purple-400',
+    expansion: 'bg-orange-400',
+    feature: 'bg-cyan-400',
+    foundation: 'bg-red-400',
+    beta: 'bg-yellow-400',
+    team: 'bg-indigo-400'
+  };
+  return colors[type] || 'bg-gray-400';
+};
+
+const getIconSvg = (type: string): string => {
+  const icons: { [key: string]: string } = {
+    launch: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
+    investment: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"/>',
+    milestone: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4l-4 4 4 4v4h8v-4l4-4-4-4V2H8z"/>',
+    expansion: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
+    feature: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"/>',
+    foundation: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4l-4 4 4 4v4h8v-4l4-4-4-4V2H8z"/>',
+    beta: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
+    team: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4l-4 4 4 4v4h8v-4l4-4-4-4V2H8z"/>'
+  };
+  return icons[type] || icons.launch;
+};
+---
+
+<section class="max-w-4xl mx-auto p-6">
+    <div class="mb-8">
+        <h2>Our Journey</h2>
+        <p>From a bold idea to reshaping how the world works together</p>
+    </div>
+
+    <div class="space-y-3">
+      {years.map((year) => (
+        <div class="border border-gray-700 rounded-xl overflow-hidden bg-gray-800 transition-all duration-300 hover:border-gray-600">
+          <button
+            class="timeline-button w-full px-6 py-5 bg-gray-800 hover:bg-gray-750 transition-all duration-300 flex items-center justify-between group"
+            data-year={year}
+          >
+            <div class="flex items-center space-x-4">
+              <span class="text-lg font-semibold text-white transition-colors duration-300">{year}</span>
+              <span class="text-sm text-gray-400 transition-colors duration-300 group-hover:text-gray-300">
+                {timelineData[year].length}개 이벤트
+              </span>
+            </div>
+            <div class="timeline-arrow">
+              <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-300" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/>
+              </svg>
+            </div>
+          </button>
+
+          <div class="timeline-content" data-content={year}>
+            <div class="px-6 pb-6 bg-gray-850">
+              <div class="border-l-2 border-gray-600 ml-1.5 pl-6 space-y-6 pt-4">
+                {timelineData[year].map((event, index) => (
+                  <div 
+                    class="timeline-event relative transform"
+                    style={`transition-delay: ${index * 100}ms`}
+                  >
+                    <div class={`absolute -left-8 w-6 h-6 bg-white rounded-full flex items-center justify-center text-white shadow-lg transition-transform duration-300 hover:scale-110`}>
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" set:html={getIconSvg(event.type)} />
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700 hover:border-gray-600 transition-all duration-300 hover:shadow-xl hover:bg-gray-750">
+                      <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-semibold text-white text-base">{event.title}</h3>
+                        <span class="text-sm text-gray-400 font-medium bg-gray-700 px-2 py-1 rounded-lg">{event.month}</span>
+                      </div>
+                      <p class="text-gray-300 text-sm leading-relaxed">{event.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+</section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let selectedYear = null;
+      
+      const buttons = document.querySelectorAll('.timeline-button');
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', function() {
+          const year = this.getAttribute('data-year');
+          const content = document.querySelector(`[data-content="${year}"]`);
+          const arrow = this.querySelector('.timeline-arrow');
+          const events = content.querySelectorAll('.timeline-event');
+          
+          // 현재 선택된 년도와 같으면 닫기
+          if (selectedYear === year) {
+            content.classList.remove('active');
+            arrow.classList.remove('rotated');
+            events.forEach(event => event.classList.remove('visible'));
+            selectedYear = null;
+            return;
+          }
+          
+          // 다른 모든 컨텐츠 닫기
+          document.querySelectorAll('.timeline-content').forEach(c => {
+            c.classList.remove('active');
+          });
+          document.querySelectorAll('.timeline-arrow').forEach(a => {
+            a.classList.remove('rotated');
+          });
+          document.querySelectorAll('.timeline-event').forEach(e => {
+            e.classList.remove('visible');
+          });
+          
+          // 현재 컨텐츠 열기
+          content.classList.add('active');
+          arrow.classList.add('rotated');
+          selectedYear = year;
+          
+          // 이벤트들을 순차적으로 나타나게 하기
+          events.forEach((event, index) => {
+            setTimeout(() => {
+              event.classList.add('visible');
+            }, index * 100);
+          });
+        });
+      });
+    });
+  </script>
