@@ -1,92 +1,8 @@
 ---
-import type { TimelineData } from "~/types";
-
-const timelineData: TimelineData = {
-  2024: [
-    { 
-      month: '12월', 
-      title: '새로운 서비스 런칭', 
-      description: '혁신적인 금융 서비스를 출시했습니다',
-      type: 'launch'
-    },
-    { 
-      month: '08월', 
-      title: '시리즈 B 투자 유치', 
-      description: '100억원 규모의 투자를 성공적으로 유치했습니다',
-      type: 'investment'
-    },
-    { 
-      month: '03월', 
-      title: '사용자 100만명 돌파', 
-      description: '누적 사용자 수가 100만명을 돌파했습니다',
-      type: 'milestone'
-    }
-  ],
-  2023: [
-    { 
-      month: '11월', 
-      title: '해외 진출', 
-      description: '동남아시아 시장에 진출했습니다',
-      type: 'expansion'
-    },
-    { 
-      month: '06월', 
-      title: 'AI 기능 도입', 
-      description: '인공지능 기반 추천 시스템을 도입했습니다',
-      type: 'feature'
-    },
-    { 
-      month: '01월', 
-      title: '회사 설립', 
-      description: '새로운 여정의 시작점이 되었습니다',
-      type: 'foundation'
-    }
-  ],
-  2022: [
-    { 
-      month: '10월', 
-      title: '베타 서비스 출시', 
-      description: '초기 사용자들과 함께 서비스를 테스트했습니다',
-      type: 'beta'
-    },
-    { 
-      month: '05월', 
-      title: '팀 빌딩', 
-      description: '핵심 개발팀을 구성했습니다',
-      type: 'team'
-    }
-  ]
-};
+import { timelineData } from "@datas/timelineData";
 
 const years = Object.keys(timelineData).sort((a, b) => parseInt(b) - parseInt(a));
 
-const getTypeColor = (type: string): string => {
-  const colors: { [key: string]: string } = {
-    launch: 'bg-blue-400',
-    investment: 'bg-green-400',
-    milestone: 'bg-purple-400',
-    expansion: 'bg-orange-400',
-    feature: 'bg-cyan-400',
-    foundation: 'bg-red-400',
-    beta: 'bg-yellow-400',
-    team: 'bg-indigo-400'
-  };
-  return colors[type] || 'bg-gray-400';
-};
-
-const getIconSvg = (type: string): string => {
-  const icons: { [key: string]: string } = {
-    launch: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
-    investment: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"/>',
-    milestone: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4l-4 4 4 4v4h8v-4l4-4-4-4V2H8z"/>',
-    expansion: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
-    feature: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"/>',
-    foundation: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4l-4 4 4 4v4h8v-4l4-4-4-4V2H8z"/>',
-    beta: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
-    team: '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4l-4 4 4 4v4h8v-4l4-4-4-4V2H8z"/>'
-  };
-  return icons[type] || icons.launch;
-};
 ---
 
 <section class="max-w-4xl mx-auto p-6">
@@ -123,9 +39,7 @@ const getIconSvg = (type: string): string => {
                     class="timeline-event relative transform"
                     style={`transition-delay: ${index * 100}ms`}
                   >
-                    <div class={`absolute -left-8 w-6 h-6 bg-white rounded-full flex items-center justify-center text-white shadow-lg transition-transform duration-300 hover:scale-110`}>
-                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" set:html={getIconSvg(event.type)} />
-                    </div>
+                    <div class="absolute -left-9 w-6 h-6 bg-white rounded-full flex items-center justify-center text-white shadow-lg transition-transform duration-300 hover:scale-110"></div>
                     <div class="bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700 hover:border-gray-600 transition-all duration-300 hover:shadow-xl hover:bg-gray-750">
                       <div class="flex items-center justify-between mb-3">
                         <h3 class="font-semibold text-white text-base">{event.title}</h3>
