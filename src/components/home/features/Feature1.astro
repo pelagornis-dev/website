@@ -1,0 +1,71 @@
+---
+// Astro component
+const stats = [
+  {
+    label: "Downloads",
+    value: 2500000,
+    suffix: "+",
+  },
+  {
+    label: "Users",
+    value: 150000,
+    suffix: "+",
+  },
+  {
+    label: "Companies",
+    value: 120,
+  },
+];
+---
+
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Trust Our Service</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      {stats.map((stat, index) => (
+        <div class="text-center p-6 transition-shadow duration-300 border-0 rounded-xl bg-gray-200">
+          <div class="mb-4">
+            <span 
+              class="text-4xl font-bold text-gray-800 counter"
+              data-target={stat.value}
+              data-suffix={stat.suffix || ""}
+            >
+              0
+            </span>
+          </div>
+          <p class="text-gray-600 font-medium text-lg">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const counters = document.querySelectorAll(".counter");
+
+    counters.forEach((counter, index) => {
+      const target = +counter.dataset.target;
+      const suffix = counter.dataset.suffix || "";
+      const duration = 2000 + index * 200;
+      let startTime;
+
+      const updateCounter = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const eased = easeOutCubic(progress);
+        const current = Math.floor(target * eased);
+        counter.textContent = current.toLocaleString("ko-KR") + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        }
+      };
+
+      requestAnimationFrame(updateCounter);
+    });
+  </script>
+</section>

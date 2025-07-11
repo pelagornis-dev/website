@@ -1,0 +1,22 @@
+---
+import { useTranslations, useTranslatedPath } from "@i18n/utils";
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const translatedPath = useTranslatedPath(lang);
+---
+
+<section class="py-32 bg-zinc-900 text-white mx-auto text-center">
+  <div class="space-y-6">
+    <span class="uppercase text-sm font-semibold text-gray-600 tracking-widest">
+      Our vision for the future
+    </span>
+    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+      Built Effective Workspace for User
+    </h2>
+    <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+      At the heart of every exceptional service is a deep understanding of the user. We design experiences that are not just functional — but meaningful.
+    </p>
+  </div>
+</section>
+  

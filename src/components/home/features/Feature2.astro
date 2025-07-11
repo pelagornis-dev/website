@@ -1,0 +1,50 @@
+<section class="bg-white py-32 px-6 sm:px-12">
+  <div class="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-16">
+    
+    <!-- 텍스트 콘텐츠 -->
+    <div class="text-left w-full md:w-1/2">
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight animate-fade-in-up">
+        Make Work Feel Effortless
+      </h1>
+      <p class="mt-6 text-lg text-gray-600 animate-fade-in-up delay-200">
+        We're building spaces where teams can collaborate, connect, and focus — all in one place, with no friction.
+      </p>
+    </div>
+
+    <!-- 이미지 콘텐츠 -->
+    <div class="w-full md:w-1/2 animate-fade-in-up delay-400">
+      <img src="https://discord.com/assets/9c38b54d98b3c9e0a709db51d1c1e8e7.svg" alt="Workspace illustration" class="w-full max-w-md mx-auto md:mx-0">
+    </div>
+  </div>
+
+  <!-- 애니메이션 정의 -->
+  <style>
+    @keyframes fade-in-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-400 {
+      animation-delay: 0.4s;
+    }
+  </style>
+</section>

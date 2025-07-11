@@ -1,15 +1,31 @@
 ---
 ---
 
-<section class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">Make Your Perfect Workspace</h1>
-        
-        <a href="#" class="cta-button">
-            시작하기
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-        </a>
+<section class="h-screen relative bg-white min-h-[600px] flex items-center justify-center px-8 md:px-20">
+    <div class="max-w-5xl text-center">
+      <h1 class="text-6xl md:text-8xl font-extrabold text-gray-900 mb-6 leading-tight">
+        About <br /> Pelagornis</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+        We're building spaces where teams can collaborate, connect, and focus — all in one place, with no friction.
+      </p>
     </div>
-</section>
+  
+    {/* 약간의 배경 그래픽 효과 */}
+    <div class="absolute inset-0 -z-10">
+      <svg
+        class="w-full h-full"
+        preserveAspectRatio="xMidYMid slice"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <radialGradient id="gradient" cx="50%" cy="50%" r="75%">
+            <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3" />
+            <stop offset="100%" stop-color="#4338ca" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#gradient)" />
+      </svg>
+    </div>
+  </section>

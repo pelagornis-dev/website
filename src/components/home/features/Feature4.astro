@@ -5,21 +5,21 @@ const years = Object.keys(timelineData).sort((a, b) => parseInt(b) - parseInt(a)
 
 ---
 
-<section class="max-w-4xl mx-auto p-6">
-    <div class="mb-8">
-        <h2>Our Journey</h2>
-        <p>From a bold idea to reshaping how the world works together</p>
+<section class="max-w-6xl mx-auto p-6 py-32">
+    <div class="mb-8 space-y-6 text-center">
+        <h2 class="text-4xl font-semibold">Our Journey</h2>
+        <p class="text-xl text-gray-400">From a bold idea to reshaping how the world works together</p>
     </div>
 
     <div class="space-y-3">
       {years.map((year) => (
-        <div class="border border-gray-700 rounded-xl overflow-hidden bg-gray-800 transition-all duration-300 hover:border-gray-600">
+        <div class="border border-gray-200 rounded-xl overflow-hidden bg-white transition-all duration-300">
           <button
-            class="timeline-button w-full px-6 py-5 bg-gray-800 hover:bg-gray-750 transition-all duration-300 flex items-center justify-between group"
+            class="timeline-button w-full px-6 py-5 bg-white transition-all duration-300 flex items-center justify-between group"
             data-year={year}
           >
             <div class="flex items-center space-x-4">
-              <span class="text-lg font-semibold text-white transition-colors duration-300">{year}</span>
+              <span class="text-lg font-semibold text-gray-800 transition-colors duration-300">{year}</span>
               <span class="text-sm text-gray-400 transition-colors duration-300 group-hover:text-gray-300">
                 {timelineData[year].length}개 이벤트
               </span>
@@ -33,19 +33,18 @@ const years = Object.keys(timelineData).sort((a, b) => parseInt(b) - parseInt(a)
 
           <div class="timeline-content" data-content={year}>
             <div class="px-6 pb-6 bg-gray-850">
-              <div class="border-l-2 border-gray-600 ml-1.5 pl-6 space-y-6 pt-4">
+              <div class="space-y-6 pt-4">
                 {timelineData[year].map((event, index) => (
                   <div 
                     class="timeline-event relative transform"
                     style={`transition-delay: ${index * 100}ms`}
                   >
-                    <div class="absolute -left-9 w-6 h-6 bg-white rounded-full flex items-center justify-center text-white shadow-lg transition-transform duration-300 hover:scale-110"></div>
-                    <div class="bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-700 hover:border-gray-600 transition-all duration-300 hover:shadow-xl hover:bg-gray-750">
+                    <div class="bg-white rounded-xl p-5 border border-gray-200 transition-all duration-300 hover:bg-gray-750">
                       <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-semibold text-white text-base">{event.title}</h3>
-                        <span class="text-sm text-gray-400 font-medium bg-gray-700 px-2 py-1 rounded-lg">{event.month}</span>
+                        <h3 class="font-semibold text-black text-base">{event.title}</h3>
+                        <span class="text-sm text-gray-600 font-medium bg-gray-100 px-2 py-1 rounded-lg">{event.month}</span>
                       </div>
-                      <p class="text-gray-300 text-sm leading-relaxed">{event.description}</p>
+                      <p class="text-gray-500 text-sm leading-relaxed">{event.description}</p>
                     </div>
                   </div>
                 ))}
