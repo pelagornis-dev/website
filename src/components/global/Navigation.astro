@@ -1,118 +1,249 @@
 ---
+// Header.astro
 import Pelagornis from "public/logo/pelagornisText.svg";
 import { headerLinks } from "~/navigation";
-import {
-  useTranslations,
-  getLangFromUrl,
-  useTranslatedPath,
-  getLangFromPath,
-} from "@i18n/utils";
+import { useTranslations, useTranslatedPath } from "@i18n/utils";
 
-import { ui as languages } from "@i18n/ui";
-const { lang, url } = Astro.props;
+const { lang } = Astro.props;
 const t = useTranslations(lang);
 const translatedPath = useTranslatedPath(lang);
 ---
 
 <header
-  aria-labelledby="navigation"
   id="navigation"
-  class="fixed top-0 left-0 right-0 z-50"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out bg-white/30 backdrop-blur-xl"
 >
+  <!-- 마우스 따라다니는 글로우 -->
   <div
-    class="absolute inset-0 bg-white/[0.6] backdrop-blur-[12px] border-b border-[#f1f1f1]"
-  >
-  </div>
+    class="absolute pointer-events-none transition-all duration-300 ease-out w-[300px] h-[300px] rounded-full opacity-0"
+    style="background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%);"
+  ></div>
+
   <div class="relative mx-auto max-w-[1440px] px-6 lg:px-12">
-    <div class="flex h-auto py-3 items-center justify-between">
-      <!-- Logo -->
-      <a href="/" class="flex shrink-0 items-center" title="Logo">
+    <div class="flex h-auto py-4 items-center justify-between">
+      
+      <!-- 로고 -->
+      <a href="/" class="flex items-center shrink-0" title="Logo">
         <Pelagornis width="auto" height={28} />
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-5">
-        {
-          headerLinks.links.map((link) => (
+      <!-- 데스크톱 메뉴 -->
+      <nav class="hidden md:flex items-center gap-2 group">
+        {headerLinks.links.map((link, index) => (
+          <div class="relative group/item">
             <a
-              href={link.href}
-              class="inline-flex h-[36px] items-center rounded-[8px] px-[12px] text-[14px] font-medium text-[#374151] transition-colors hover:bg-black/[0.04] hover:text-black"
+              href={translatedPath(link.href)}
+              class="flex items-center px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 rounded-lg hover:bg-black/5 group/link relative overflow-hidden shine"
+              style={`animation-delay: ${index * 100}ms`}
             >
-              {link.title}
+              <div class="absolute inset-0 bg-gradient-to-r from-black/5 to-transparent opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 rounded-lg shine-glow"></div>
+              <span class="relative z-10">{link.title}</span>
             </a>
-          ))
-        }
+          </div>
+        ))}
       </nav>
 
-      <!-- Right Section -->
+      <!-- 우측 버튼 -->
       <div class="flex items-center gap-3">
-        <!-- Sign In Button -->
         <a
-          href="/login"
-          class="inline-flex h-[36px] items-center rounded-[8px] bg-black px-[12px] text-[14px] font-medium text-white transition-colors hover:bg-black/90"
+          href="https://auth.pelagornis.com/"
+          class="hidden md:inline-flex h-[36px] items-center rounded-lg text-gray-700 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 border border-gray-300 hover:border-gray-400 px-3 text-sm font-medium transition-all duration-300 group"
         >
-          Sign in
+          <span class="group-hover:animate-pulse">Sign in</span>
         </a>
 
-        <!-- Mobile Menu Button -->
+        <!-- 모바일 메뉴 토글 -->
         <button
+          id="mobile-menu-toggle"
           type="button"
-          class="md:hidden inline-flex h-[36px] w-[36px] items-center justify-center rounded-[8px] text-[#374151] transition-colors hover:bg-black/[0.04] hover:text-black"
+          class="md:hidden inline-flex h-[36px] w-[36px] items-center justify-center rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 border border-gray-300 hover:border-gray-400 transition-all duration-300"
           aria-label="Menu"
+          aria-expanded="false"
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M2 12h12M2 4h12M2 8h12"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
+          <div class="relative w-5 h-5">
+            <svg 
+              id="menu-icon"
+              class="absolute inset-0 w-5 h-5 transition-all duration-500 rotate-0 opacity-100 scale-100" 
+              width="20" height="20" viewBox="0 0 20 20" fill="none"
+            >
+              <path
+                d="M3 6h14M3 10h14M3 14h14"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg 
+              id="close-icon"
+              class="absolute inset-0 w-5 h-5 transition-all duration-500 -rotate-180 opacity-0 scale-0" 
+              width="20" height="20" viewBox="0 0 20 20" fill="none"
+            >
+              <path
+                d="M6 6l8 8M6 14l8-8"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Mobile Menu Panel -->
-  <div class="hidden md:hidden">
-    <nav
-      class="fixed inset-x-0 top-[72px] bottom-0 bg-white/[0.6] backdrop-blur-[12px] border-t border-[#f1f1f1]"
-    >
-      <div class="flex flex-col gap-2 p-6">
-        {
-          headerLinks.links.map((link) => (
-            <a
-              href={link.href}
-              class="inline-flex h-[44px] items-center rounded-[8px] px-[16px] text-[14px] font-medium text-[#374151] transition-colors hover:bg-black/[0.04] hover:text-black"
-            >
-              {link.title}
-            </a>
-          ))
-        }
+  <!-- 모바일 메뉴 -->
+  <div
+    id="mobile-menu"
+    class="md:hidden fixed inset-x-0 top-[72px] origin-top scale-y-95 opacity-0 translate-y-[-8px] transition-all duration-300 ease-out pointer-events-none backdrop-blur-2xl bg-white/80 border-t border-white/40 z-40"
+  >
+    <div class="flex flex-col gap-2 p-6">
+      {headerLinks.links.map((link, index) => (
+        <a
+          href={translatedPath(link.href)}
+          class="inline-flex h-[44px] items-center rounded-lg px-4 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-black/5 transition-all duration-300 transform hover:translate-x-2 group mobile-nav-item"
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <span class="flex-1">{link.title}</span>
+        </a>
+      ))}
+      
+      <div class="pt-4 border-t border-gray-200 space-y-3">
+        <a
+          href="https://auth.pelagornis.com/"
+          class="w-full justify-center text-gray-700 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 border border-gray-300 hover:border-gray-400 transition-all duration-300 flex items-center py-3 rounded-lg text-sm font-medium"
+        >
+          Sign in
+        </a>
       </div>
-    </nav>
+    </div>
   </div>
 </header>
 
 <style>
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .shine-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    height: 100%;
+    width: 150%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+    transform: skewX(-20deg);
+    animation: shine 1.2s ease-in-out infinite;
+  }
+
+  .shine:hover .shine-glow::before {
+    animation-play-state: running;
+  }
+
   header {
     transform: translateZ(0);
+  }
+
+  .mobile-nav-item {
+    animation: slideInLeft 0.6s ease-out forwards;
+    opacity: 0;
   }
 </style>
 
 <script>
-  const mobileMenuButton = document.querySelector('button[aria-label="Menu"]');
-  const mobileMenu = document.querySelector(".md\\:hidden");
+  document.addEventListener("DOMContentLoaded", () => {
+    // 헤더 스크롤 효과
+    const header = document.getElementById("navigation");
 
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener("click", () => {
-      const isExpanded =
-        mobileMenuButton.getAttribute("aria-expanded") === "true";
-      mobileMenuButton.setAttribute(
-        "aria-expanded",
-        !isExpanded ? "true" : "false"
-      );
-      mobileMenu.classList.toggle("hidden");
-    });
-  }
+    // header가 존재하는지 확인
+    if (!header) {
+      console.error("Navigation header not found");
+      return;
+    }
+
+    let isScrolled = false;
+
+    // 스크롤 이벤트
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const newIsScrolled = scrollY > 20;
+      
+      if (newIsScrolled !== isScrolled) {
+        isScrolled = newIsScrolled;
+        if (isScrolled) {
+          header.classList.remove("bg-white/30", "backdrop-blur-xl");
+          header.classList.add("bg-white/70", "backdrop-blur-2xl");
+        } else {
+          header.classList.remove("bg-white/70", "backdrop-blur-2xl");
+          header.classList.add("bg-white/30", "backdrop-blur-xl");
+        }
+      }
+    };
+
+    // 모바일 메뉴 토글
+    const toggleBtn = document.getElementById("mobile-menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
+
+    if (toggleBtn && menu && menuIcon && closeIcon) {
+      toggleBtn.addEventListener("click", () => {
+        const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", String(!expanded));
+
+        if (expanded) {
+          // 메뉴 닫기
+          menu.classList.remove("opacity-100", "scale-y-100", "translate-y-0", "pointer-events-auto");
+          menu.classList.add("opacity-0", "scale-y-95", "-translate-y-2", "pointer-events-none");
+          
+          // 아이콘 변경
+          menuIcon.classList.remove("rotate-180", "opacity-0", "scale-0");
+          menuIcon.classList.add("rotate-0", "opacity-100", "scale-100");
+          closeIcon.classList.remove("rotate-0", "opacity-100", "scale-100");
+          closeIcon.classList.add("-rotate-180", "opacity-0", "scale-0");
+        } else {
+          // 메뉴 열기
+          menu.classList.remove("opacity-0", "scale-y-95", "-translate-y-2", "pointer-events-none");
+          
+          // 프레임 분리로 애니메이션 보장
+          requestAnimationFrame(() => {
+            menu.classList.add("opacity-100", "scale-y-100", "translate-y-0", "pointer-events-auto");
+          });
+          
+          // 아이콘 변경
+          menuIcon.classList.remove("rotate-0", "opacity-100", "scale-100");
+          menuIcon.classList.add("rotate-180", "opacity-0", "scale-0");
+          closeIcon.classList.remove("-rotate-180", "opacity-0", "scale-0");
+          closeIcon.classList.add("rotate-0", "opacity-100", "scale-100");
+        }
+      });
+    }
+
+    // 이벤트 리스너 등록
+    window.addEventListener("scroll", handleScroll, { passive: true });
+  });
 </script>
