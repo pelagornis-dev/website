@@ -26,7 +26,7 @@ export const footerLinks = {
             links: [
                 {
                     title: "AppKit",
-                    href: "/appkit",
+                    href: "https://appkit.com",
                 },
             ],
         },
@@ -70,10 +70,6 @@ export const footerLinks = {
                 {
                     title: "Privacy Policy",
                     href: "/privacy",
-                },
-                {
-                    title: "Security",
-                    href: "/security",
                 },
             ],
         },
